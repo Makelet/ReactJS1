@@ -10,6 +10,7 @@ function App() {
   return (
     <div className="App">
       <h1>
+        This is a Number
         {value}
       </h1>
       <button onClick={() => { setValue(value + 1) }}>Click me</button>
