@@ -64,10 +64,10 @@ function App() {
     }
   ]);
 
-  let Todo = ({todo})=>{
+  let Todo = ({ todo }) => {
     return (
       <>
-      <div className="box">
+        <div className="box">
           <h4>Id : {todo.id}</h4>
           <h1>Title : {todo.title}</h1>
           <p>Desc : {todo.desc}</p>
@@ -76,9 +76,35 @@ function App() {
     )
   }
 
+  let [value, setValue] = useState("");
+  let [form, setForm] = useState({});
+
+  const handleChange = (e) => {
+    // setValue(e.target.value);
+
+    // let inputVal = e.target.value;
+    // console.log(inputVal);
+    // console.log(e.target.value);
+    setForm({ ...form, [e.target.name] : e.target.value });
+    // console.log(form);
+    setValue(e.target.value);
+    console.log(value);
+  }
+
+  const handleClick = () => {
+  }
+
   return (
     <>
       <NavBar />
+
+      {/* <input type="text" value={value} onChange={handleChange} /> */}
+      {/* <button onClick={handleClick}>Add</button> */}
+
+      <input type="text" name="email" value={form.email?form.email:""} onChange={handleChange} />
+      <input type="text" name="phone" value={form.phone?form.phone:""} onChange={handleChange} />
+
+
       <h1>{count}</h1>
       <button ref={btnRef} onClick={handleCount}>Click Me</button>
       {/* <button ref={btnRef} onClick={() => { setCount(count + 1) }}>Click Me</button> */}
@@ -106,9 +132,9 @@ function App() {
         </div>)
       })} */}
 
-      {todos.map((todo)=>{
-        console.log(todo);
-        return <Todo key={todo.id} todo={todo}/>
+      {todos.map((todo) => {
+        // console.log(todo);
+        return <Todo key={todo.id} todo={todo} />
       })}
       <Footer />
     </>
